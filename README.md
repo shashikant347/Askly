@@ -1,6 +1,7 @@
 # React + Vite
 
-website link  --  https://shashikant347.github.io/Askly/
+website link  --  askly-rho.vercel.app ,  askly-shashikant347s-projects.vercel.app
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
