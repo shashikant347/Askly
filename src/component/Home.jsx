@@ -102,7 +102,7 @@ function Home() {
         ></Sidebar>
       </div>
       <div className="col-span-3 ">
-        <div ref={scroll} className="h-130 scrollbar-hide overflow-scroll  p-8">
+        <div ref={scroll} className="h-[90vh] scrollbar-hide overflow-scroll  p-8">
           <div className="text-white p-3">
             <Loder loding={loding} />
 
