@@ -33,7 +33,7 @@ Askly is a React-based application designed to facilitate question-and-answer in
 
 🖼 React Icons – Icon library for React
 
-⚡ Vite – Fast development and build tool
+
 
 
 ## 📦 Key Dependencies
