@@ -18,17 +18,18 @@ function AnswerList({ ans, id }) {
     return stars.replace(/^(\*)(\*)|(\*)$/g, "");
   }
 
-  return (
-    <>
-      {id === 0 ? (
-        <span className="">{remove}</span>
-      ) : heading ? (
-        <span className="pt-5 text-lg block">{remove}</span>
-      ) : (
-        <span className="pl-4 text-sm">{remove}</span>
-      )}
-    </>
-  );
+ return (
+  <>
+    {id === 0 ? (
+      <span className="text-sm md:text-base">{remove}</span>
+    ) : heading ? (
+      <span className="pt-3 md:pt-5 text-base md:text-lg block">{remove}</span>
+    ) : (
+      <span className="pl-2 md:pl-4 text-sm md:text-base">{remove}</span>
+    )}
+  </>
+);
+
 }
 
 export default AnswerList;

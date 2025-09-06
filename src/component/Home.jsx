@@ -93,51 +93,64 @@ function Home() {
   }, [answer]);
 
   return (
-    <div className="grid grid-cols-4 h-screen">
-      <div className="col-span-1">
-        <Sidebar
-          recentHistory={local}
-          ask={setOnhistory}
-          clearHistory={setLocal}
-        ></Sidebar>
-      </div>
-      <div className="col-span-3 ">
-        <div ref={scroll} className="h-[90vh] scrollbar-hide overflow-scroll  p-8">
-          <div className="text-white p-3">
-            <Loder loding={loding} />
+    <div className="grid grid-cols-1 md:grid-cols-4 h-screen">
+  {/* Sidebar */}
+  <div className="hidden md:block md:col-span-1">
+    <Sidebar
+      recentHistory={local}
+      ask={setOnhistory}
+      clearHistory={setLocal}
+    />
+  </div>
 
-            <ul>
-              {answer.map((item, index) => (
-                <div
-                  key={index + Math.random()}
-                  className={item.type === "que" ? "flex justify-end" : ""}
+  {/* Main Chat Section */}
+  <div className="col-span-1 md:col-span-3 flex flex-col">
+    <div
+      ref={scroll}
+      className="flex-1 h-[80vh] md:h-[90vh] scrollbar-hide overflow-scroll p-4 md:p-8"
+    >
+      <div className="text-white">
+        <Loder loding={loding} />
+        <ul>
+          {answer.map((item, index) => (
+            <div
+              key={index + Math.random()}
+              className={item.type === "que" ? "flex justify-end" : ""}
+            >
+              {item.type === "que" ? (
+                <li
+                  key={`q-${index}`}
+                  className="p-2 md:p-3 bg-zinc-600 border-2 border-zinc-600 rounded-bl-3xl rounded-t-3xl"
                 >
-                  {item.type === "que" ? (
-                    <li
-                      key={`q-${index}`}
-                      className=" p-1  pr-3 bg-zinc-600 border-2 border-zinc-600 rounded-bl-3xl rounded-t-3xl  "
-                    >
-                      <AnswerList ans={item.text} id={index} />
-                    </li>
-                  ) : (
-                    item.text.map((ans) => (
-                      <li key={index + Math.random()} className="text-left p-1">
-                        <AnswerList ans={ans} id={index} />
-                      </li>
-                    ))
-                  )}
-                </div>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <InputButton
-          setQuestion={setQuestion}
-          question={question}
-          askQuestion={askQuestion}
-        />
+                  <AnswerList ans={item.text} id={index} />
+                </li>
+              ) : (
+                item.text.map((ans) => (
+                  <li
+                    key={index + Math.random()}
+                    className="text-left p-1 md:p-2"
+                  >
+                    <AnswerList ans={ans} id={index} />
+                  </li>
+                ))
+              )}
+            </div>
+          ))}
+        </ul>
       </div>
     </div>
+
+    {/* Input Box */}
+    <div className="p-2 md:p-4">
+      <InputButton
+        setQuestion={setQuestion}
+        question={question}
+        askQuestion={askQuestion}
+      />
+    </div>
+  </div>
+</div>
+
   );
 }
 
