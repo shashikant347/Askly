@@ -60,7 +60,7 @@ function Home() {
       instring = instring.split("* ");
       instring = instring.map((item) => item.trim());
 
-      // Gemini response ka text
+     
       if (instring) {
         setAnswer([
           ...answer,
@@ -103,7 +103,7 @@ function Home() {
     />
   </div>
 
-  {/* Main Chat Section */}
+ 
   <div className="col-span-1 md:col-span-3 flex flex-col">
     <div
       ref={scroll}
@@ -140,7 +140,7 @@ function Home() {
       </div>
     </div>
 
-    {/* Input Box */}
+  
     <div className="p-2 md:p-4">
       <InputButton
         setQuestion={setQuestion}
