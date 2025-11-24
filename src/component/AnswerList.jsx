@@ -11,6 +11,7 @@ function AnswerList({ ans, id }) {
     }
   }, []);
 
+
   function headingCheck(data) {
     return /^(\*)(\*)(.*)\*$/.test(data);
   }
