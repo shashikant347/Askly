@@ -55,9 +55,18 @@ function Home() {
 
       const data = await res.json();
 
-      let instring = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-      instring = instring.split("* ");
-      instring = instring.map((item) => item.trim());
+     let instring = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+if (typeof instring !== "string") {
+  setAnswer((prev) => [
+    ...prev,
+    { type: "ans", text: ["API error / No response"] },
+  ]);
+  setLoding(false);
+  return;
+}
+
+instring = instring.split("* ").map((item) => item.trim());
 
      
       if (instring) {
@@ -75,14 +84,21 @@ function Home() {
         ]);
       }
     } catch (error) {
-      console.error("Error fetching:", error);
-      setAnswer("Error fetching data");
+       console.error("Error fetching:", error);
+  setAnswer((prev) => [
+    ...prev,
+    { type: "ans", text: ["Something went wrong"] },
+  ]);
+  setLoding(false);
     }
   };
 
-  useEffect(() => {
+ useEffect(() => {
+  if (onhistory) {
     askQuestion();
-  }, [onhistory]);
+  }
+}, [onhistory]);
+
 
   useEffect(() => {
     if (scroll.current) {
@@ -115,23 +131,19 @@ function Home() {
               key={index + Math.random()}
               className={item.type === "que" ? "flex justify-end" : ""}
             >
-              {item.type === "que" ? (
-                <li
-                  key={`q-${index}`}
-                  className="p-2 md:p-3 bg-zinc-600 border-2 border-zinc-600 rounded-bl-3xl rounded-t-3xl"
-                >
-                  <AnswerList ans={item.text} id={index} />
-                </li>
-              ) : (
-                item.text.map((ans) => (
-                  <li
-                    key={index + Math.random()}
-                    className="text-left p-1 md:p-2"
-                  >
-                    <AnswerList ans={ans} id={index} />
-                  </li>
-                ))
-              )}
+             {item.type === "que" ? (
+  <li className="p-2 md:p-3 bg-zinc-600 rounded-bl-3xl rounded-t-3xl">
+    <AnswerList ans={item.text} id={index} />
+  </li>
+) : (
+  Array.isArray(item.text) &&
+  item.text.map((ans, i) => (
+    <li key={i} className="text-left p-1 md:p-2">
+      <AnswerList ans={ans} id={index} />
+    </li>
+  ))
+)}
+
             </div>
           ))}
         </ul>
