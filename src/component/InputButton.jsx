@@ -3,7 +3,6 @@ export default function InputButton({ setQuestion, askQuestion, question }) {
   const forEnter = (e) => {
     if (e.key === "Enter") askQuestion();
   };
-
   return (
     <>
       <div className="bg-zinc-800 w-full md:w-1/2 text-white m-auto border-zinc-400 border flex rounded-3xl">
@@ -15,6 +14,7 @@ export default function InputButton({ setQuestion, askQuestion, question }) {
           value={question}
           onKeyUp={forEnter}
         />
+        
         <button
           className="w-10 pr-1 transform transition-transform duration-300 hover:scale-110 cursor-pointer"
           onClick={askQuestion}
