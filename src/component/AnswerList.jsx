@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState,useEffect} from "react";
+
 
 function AnswerList({ ans, id }) {
   const [heading, setHeading] = useState(false);
