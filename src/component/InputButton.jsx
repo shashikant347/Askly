@@ -23,5 +23,5 @@ export default function InputButton({ setQuestion, askQuestion, question }) {
         </button>
       </div>
     </>
-  );
+  )
 }
