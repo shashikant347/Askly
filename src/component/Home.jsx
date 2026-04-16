@@ -104,7 +104,7 @@ function Home() {
       <div className="col-span-1 md:col-span-3 flex flex-col">
         <div
           ref={scroll}
-          className="flex-1 h-[80vh] md:h-[90vh] scrollbar-hide overflow-scroll p-4 md:p-8"
+          className="flex-1 h-[80vh] md:h-[90vh] scrollbar-hide overflow-scroll p-3 md:p-8"
         >
           <div className="text-white">
             <Loder loding={loding} />
